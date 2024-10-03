@@ -1,0 +1,26 @@
+.filter-container {
+  height: auto;
+  padding: 5rem;
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  place-items: center;
+  display: grid;
+  gap: 20px;
+  position: relative;
+
+  & h1 {
+    height: calc(87.9vh - 138px - 170px);
+    width: 100%;
+    color: var(--color-quartery);
+    font-size: 3rem;
+    text-align: center;
+  }
+}
+
+.empty {
+  display: block;
+}
+
+.card-container {
+  margin-bottom: 2rem;
+}

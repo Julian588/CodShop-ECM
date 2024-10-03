@@ -1,0 +1,127 @@
+.description-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & .card-description-container {
+    width: 100%;
+    display: flex;
+    padding: 5rem;
+
+    & .caratula-container {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+
+      & .caratula {
+        position: relative;
+        width: 100%;
+
+        & img {
+          width: 100%;
+          height: auto;
+        }
+
+        & span {
+          color: #fff;
+          font-size: 1.8rem;
+          width: 50px;
+          height: 50px;
+          background-color: var(--color-primary);
+          position: absolute;
+          border-radius: 50%;
+          left: 15px;
+          top: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      & h2 {
+        font-size: 4rem;
+        text-align: start;
+        width: 100px;
+        align-self: flex-start;
+      }
+
+      & p {
+        font-size: large;
+      }
+    }
+
+    & .comprar-container {
+      width: 40%;
+      display: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      padding: 3rem;
+
+      & .juego-titulo {
+        font-size: 5rem;
+        color: var(--color-quartery);
+      }
+
+      & .price-container {
+        width: 100%;
+        display: flex;
+        gap: 1.5rem;
+
+        & .card-price-org {
+          color: var(--color-quartery);
+          font-weight: 500;
+        }
+
+        & .card-price-ofe {
+          font-size: 2.5rem;
+          font-weight: 600;
+          color: var(--color-primary);
+        }
+      }
+
+      & .form-container {
+        width: 80%;
+        align-self: center;
+      }
+
+      & .licencia-primaria,
+      .licencia-secundaria {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        & h3 {
+          font-size: 1.8rem;
+          text-align: balance;
+        }
+
+        & p {
+          font-size: 1.5rem;
+          text-align: balance;
+        }
+      }
+
+      & .datos {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        & .idioma,
+        .peso {
+          font-weight: bold;
+          font-size: 1.6rem;
+        }
+
+        & .garantia {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
