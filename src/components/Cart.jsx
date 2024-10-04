@@ -32,8 +32,8 @@ function Cart({ className, closeCart }) {
       </header>
       <ul className="cart-item-container">
         {cart.length > 0 ? (
-          cart.map((product) => (
-            <CartItem producto={product} key={product.id}></CartItem>
+          cart.map((product, index) => (
+            <CartItem producto={product} key={index}></CartItem>
           ))
         ) : (
           <></>
@@ -44,9 +44,9 @@ function Cart({ className, closeCart }) {
           Total: <span>${total}</span>
         </h1>
         <button className="btn-buy">Comprar</button>
-        <Link to={"/"} className="btn-more">
-          Ver más productos
-        </Link>
+        <button className="btn-more" type="button" onClick={closeCart}>
+          Seguir comprando
+        </button>
       </footer>
     </aside>
   );
