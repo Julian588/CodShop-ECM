@@ -27,7 +27,9 @@ function CartItem({ producto }) {
       <button
         type="button"
         className="delete-item"
-        onClick={() => removeFromCart(producto)}
+        onClick={() =>
+          removeFromCart(producto, producto.consola, producto.licencia)
+        }
       >
         <i className="fa-regular fa-trash-can"></i>
       </button>
@@ -39,11 +41,18 @@ function CartItem({ producto }) {
         />
       </Link>
       <div className="cart-item-price-container">
-        <Link to={`/juegos/${producto.id}`}>
-          <strong className="cart-item-name">{producto.nombre}</strong>
+        <Link to={`/juegos/${producto.id}`} className="cart-item-name">
+          <strong>
+            {producto.nombre}{" "}
+            <span style={{ color: "var(--color-quartery)", fontWeight: 400 }}>
+              {producto.consola} ({producto.licencia})
+            </span>
+          </strong>
         </Link>
         <div className="button-price-container">
-          <AddMinus producto={producto} />
+          <div className="add-minus-container">
+            <AddMinus producto={producto} />
+          </div>
           <div className="price-container">
             {producto.oferta ? (
               <>

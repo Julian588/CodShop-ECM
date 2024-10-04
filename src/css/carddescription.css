@@ -56,7 +56,6 @@
 
     & .comprar-container {
       width: 40%;
-      display: auto;
       display: flex;
       flex-direction: column;
       gap: 3rem;
@@ -85,7 +84,7 @@
       }
 
       & .form-container {
-        width: 80%;
+        width: 100%;
         align-self: center;
       }
 
@@ -99,6 +98,7 @@
         & h3 {
           font-size: 1.8rem;
           text-align: balance;
+          font-weight: bold;
         }
 
         & p {
