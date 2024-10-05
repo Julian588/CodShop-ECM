@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import ProductsProvider from "./components/context/productsContext";
 import CartProvider from "./components/context/cartContext";
 import "swiper/css/bundle";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

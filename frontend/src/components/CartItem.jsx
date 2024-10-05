@@ -44,8 +44,8 @@ function CartItem({ producto }) {
         <Link to={`/juegos/${producto.id}`} className="cart-item-name">
           <strong>
             {producto.nombre}{" "}
-            <span>
-              {producto.consola} ({producto.licencia}){" "}
+            <span style={{ color: "var(--color-quartery)", fontWeight: 400 }}>
+              {producto.consola} ({producto.licencia})
             </span>
           </strong>
         </Link>
@@ -53,6 +53,7 @@ function CartItem({ producto }) {
           <div className="add-minus-container">
             <AddMinus producto={producto} />
           </div>
+
           <div className="price-container">
             {producto.oferta ? (
               <>

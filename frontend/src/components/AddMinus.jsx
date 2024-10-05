@@ -1,5 +1,5 @@
 import "../css/addminus.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCart } from "./Hooks/useCart";
 
 function AddMinus({ producto }) {
@@ -29,9 +29,13 @@ function AddMinus({ producto }) {
   const handleOnChange = (e) => {
     const newValue = Number(e.target.value);
     if (newValue >= 1) {
-      setValue(newValue);
+      setValue(producto.cantidad);
     }
   };
+
+  useEffect(() => {
+    setValue(producto.cantidad);
+  }, [producto.cantidad]);
   return (
     <div className="carrito-add">
       <button className="minus-icon" type="button" onClick={handleOnClickMinus}>

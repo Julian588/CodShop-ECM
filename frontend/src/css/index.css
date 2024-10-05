@@ -6,7 +6,7 @@
   --color-terceary: #efefef;
   --color-quartery: #585858;
 
-  --transition-1: all 300ms ease;
+  --transition-1: all 200ms ease;
   --transition-2: all 500ms ease;
   --transition-3: all 1s ease;
 
@@ -18,12 +18,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Tilt Neon", sans-serif;
-  text-decoration: none;
   list-style: none;
 }
 
 body {
   overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
 }
 
 a {
