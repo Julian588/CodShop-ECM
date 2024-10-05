@@ -11,7 +11,8 @@ function CartProvider({ children }) {
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  const addCart = (product, consola, licencia) => {
+  //addCart Method
+  const addCart = (product, licencia, consola) => {
     const productsInCartIndex = cart.findIndex(
       (item) =>
         item.id === product.id &&
@@ -28,12 +29,11 @@ function CartProvider({ children }) {
       ...prevState,
       { ...product, consola: consola, licencia: licencia, cantidad: 1 },
     ]);
-    setToastMessage(
-      `${product.nombre} ha sido agregado al carrito con consola ${consola} y licencia ${licencia}.`
-    );
+    setToastMessage(`${product.nombre} ha sido agregado al carrito.`);
     setToastVisible(true);
   };
 
+  //removeFromCart Method
   const removeFromCart = (product, consola, licencia) => {
     setCart((prevCart) =>
       prevCart.filter(
@@ -45,8 +45,10 @@ function CartProvider({ children }) {
           )
       )
     );
+    product.cantidad = 0;
   };
 
+  //updateItemQuantity Method
   const updateItemQuantity = (id, newQuantity, consola, licencia) => {
     setCart((prevCart) =>
       prevCart.map((item) =>

@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useProducts from "./Hooks/useProducts";
 
 function SearchBar() {
-  const { setFilters } = useProducts();
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -20,6 +18,7 @@ function SearchBar() {
     <form className="input__container" onSubmit={handleSearch}>
       <input
         type="text"
+        placeholder="Buscar..."
         className="buscador"
         value={query}
         onChange={(e) => {

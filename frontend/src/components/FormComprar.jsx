@@ -1,14 +1,13 @@
+import { useState } from "react";
 import "../css/formcomprar.css";
 import AddMinus from "./AddMinus";
 import { useCart } from "./Hooks/useCart";
-import { useState } from "react";
 
 function FormComprar({ producto, showAdd = false }) {
   const consola = producto.consola.split("|");
-  const [valueConsola, setValueConsola] = useState();
-  const [valueLicencia, setValueLicencia] = useState();
-
   const { addCart } = useCart();
+  const [valueConsola, setValueConsola] = useState("");
+  const [valueLicencia, setValueLicencia] = useState("");
 
   const wrapperClassName = showAdd
     ? "select-wrapper"
@@ -17,10 +16,11 @@ function FormComprar({ producto, showAdd = false }) {
     ? "button-container"
     : "button-container-no-show";
 
-  const handleOnClick = (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (!valueConsola || !valueLicencia) return;
-    else {
+    if (!valueConsola || !valueLicencia) {
+      return;
+    } else {
       addCart(
         { ...producto, consola: valueConsola, licencia: valueLicencia },
         valueConsola,
@@ -30,7 +30,7 @@ function FormComprar({ producto, showAdd = false }) {
   };
 
   return (
-    <form className="card-container-comprar-form" onSubmit={handleOnClick}>
+    <form className="card-container-comprar-form" onSubmit={handleOnSubmit}>
       <div className={wrapperClassName}>
         <div className="container-consola">
           <label htmlFor="juego-consola">Consola</label>

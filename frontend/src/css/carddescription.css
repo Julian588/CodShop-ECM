@@ -15,7 +15,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 2rem;
 
       & .caratula {
         position: relative;
@@ -29,13 +29,13 @@
         & span {
           color: #fff;
           font-size: 1.8rem;
-          width: 50px;
-          height: 50px;
+          width: 5rem;
+          height: 5rem;
           background-color: var(--color-primary);
           position: absolute;
           border-radius: 50%;
-          left: 15px;
-          top: 15px;
+          left: 1.5rem;
+          top: 1.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -43,14 +43,15 @@
       }
 
       & h2 {
-        font-size: 4rem;
+        font-size: 5rem;
         text-align: start;
-        width: 100px;
+        width: 10rem;
         align-self: flex-start;
       }
 
       & p {
-        font-size: large;
+        font-size: 2.5rem;
+        color: var(--color-quartery);
       }
     }
 
@@ -84,8 +85,8 @@
       }
 
       & .form-container {
-        width: 100%;
-        align-self: center;
+        width: 70%;
+        align-self: flex-start;
       }
 
       & .licencia-primaria,
@@ -93,17 +94,17 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
 
         & h3 {
-          font-size: 1.8rem;
+          font-size: 2.5rem;
           text-align: balance;
           font-weight: bold;
         }
 
         & p {
-          font-size: 1.5rem;
+          font-size: 2rem;
           text-align: balance;
+          color: var(--color-quartery);
         }
       }
 
@@ -115,11 +116,11 @@
         & .idioma,
         .peso {
           font-weight: bold;
-          font-size: 1.6rem;
+          font-size: 1.8rem;
         }
 
         & .garantia {
-          font-size: 1.6rem;
+          font-size: 1.8rem;
         }
       }
     }

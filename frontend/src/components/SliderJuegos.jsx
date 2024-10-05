@@ -35,7 +35,7 @@ function SliderJuegos({ sectionTitle, productos, id }) {
         }}
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={50}
-        slidesPerView={4}
+        slidesPerView={5}
         autoplay={{
           disableOnInteraction: false,
         }}

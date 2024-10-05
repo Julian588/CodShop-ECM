@@ -53,6 +53,7 @@ function CartItem({ producto }) {
           <div className="add-minus-container">
             <AddMinus producto={producto} />
           </div>
+
           <div className="price-container">
             {producto.oferta ? (
               <>

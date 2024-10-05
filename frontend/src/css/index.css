@@ -2,7 +2,7 @@
 
 :root {
   --color-primary: #1087ff;
-  --color-secundary: #98cbff92;
+  --color-secundary: #6db0f392;
   --color-terceary: #efefef;
   --color-quartery: #585858;
 
@@ -29,6 +29,10 @@ a {
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .wpp-btn {
   position: fixed;
   bottom: 0;
@@ -36,6 +40,6 @@ a {
   z-index: 9999;
 
   & img {
-    width: 70px;
+    width: 7rem;
   }
 }
