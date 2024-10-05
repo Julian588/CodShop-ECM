@@ -78,13 +78,22 @@
         transition: var(--transition-1);
 
         & .cart-item-name {
+          max-width: 33.5rem;
           font-size: 1.8rem;
           color: black;
           font-weight: 400;
+          text-decoration: none;
+          transition: var(--transition-1);
+
+          & span {
+            font-size: 1.5rem;
+            color: var(--color-quartery);
+            font-weight: 300;
+          }
         }
 
         & .cart-item-name:hover {
-          transform: scale(1.1);
+          transform: scale(1.04);
           color: var(--color-quartery);
         }
 
@@ -92,6 +101,10 @@
           display: flex;
           justify-content: space-between;
           align-items: flex-end;
+
+          & .add-minus-container {
+            width: 15rem;
+          }
 
           & .price-container {
             display: flex;

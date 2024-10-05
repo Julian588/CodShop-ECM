@@ -9,12 +9,22 @@ function AddMinus({ producto }) {
   const handleOnClickMinus = () => {
     if (value > 1) {
       setValue(value - 1);
-      updateItemQuantity(producto.id, producto.cantidad - 1);
+      updateItemQuantity(
+        producto.id,
+        producto.cantidad - 1,
+        producto.consola,
+        producto.licencia
+      );
     }
   };
   const handleOnClickPlus = () => {
     setValue(value + 1);
-    updateItemQuantity(producto.id, producto.cantidad + 1);
+    updateItemQuantity(
+      producto.id,
+      producto.cantidad + 1,
+      producto.consola,
+      producto.licencia
+    );
   };
   const handleOnChange = (e) => {
     const newValue = Number(e.target.value);

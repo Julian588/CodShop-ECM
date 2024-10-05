@@ -16,24 +16,26 @@ function Home() {
   const productosEnOferta = filtrarOfertas(products);
 
   return (
-    <section className="main-banner">
+    <>
       <Banner></Banner>
-      <SliderJuegos
-        sectionTitle={"OFEERTAS"}
-        productos={productosEnOferta}
-        id={1}
-      ></SliderJuegos>
-      <SliderJuegos
-        sectionTitle={"NOVEDADES"}
-        productos={products}
-        id={2}
-      ></SliderJuegos>
-      <SliderJuegos
-        sectionTitle={"DESTACADOS"}
-        productos={products}
-        id={3}
-      ></SliderJuegos>
-    </section>
+      <div className="main-banner">
+        <SliderJuegos
+          sectionTitle={"OFEERTAS"}
+          productos={productosEnOferta}
+          id={1}
+        ></SliderJuegos>
+        <SliderJuegos
+          sectionTitle={"NOVEDADES"}
+          productos={products}
+          id={2}
+        ></SliderJuegos>
+        <SliderJuegos
+          sectionTitle={"DESTACADOS"}
+          productos={products}
+          id={3}
+        ></SliderJuegos>
+      </div>
+    </>
   );
 }
 

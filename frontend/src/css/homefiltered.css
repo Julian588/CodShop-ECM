@@ -1,15 +1,16 @@
 .filter-container {
   height: auto;
+  min-height: 68.8vh;
   padding: 5rem;
   width: 100%;
-  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-columns: repeat(5, minmax(20rem, 1fr));
   place-items: center;
   display: grid;
-  gap: 20px;
+  gap: 2rem;
   position: relative;
 
   & h1 {
-    height: calc(87.9vh - 138px - 170px);
+    height: calc(87.9vh - 13rem - 17rem);
     width: 100%;
     color: var(--color-quartery);
     font-size: 3rem;

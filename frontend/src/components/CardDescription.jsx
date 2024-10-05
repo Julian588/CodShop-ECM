@@ -62,7 +62,10 @@ function CardDescription() {
                 </div>
               </>
             ) : (
-              <span className="card-price-org" style={{ fontSize: "3rem" }}>
+              <span
+                className="card-price-org"
+                style={{ fontSize: "3rem", color: "var(--color-quartery)" }}
+              >
                 {"$" + productoARenderizar.precio}
               </span>
             )}
