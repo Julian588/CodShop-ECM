@@ -34,9 +34,9 @@ function App() {
           </Routes>
         </main>
         <Footer></Footer>
-        <a href="#" className="wpp-btn">
+        {/* <a href="#" className="wpp-btn">
           <img src="/assets/whatsapp.svg" alt="Whatsapp Icono Link" />
-        </a>
+        </a> */}
       </CartProvider>
     </ProductsProvider>
   );
