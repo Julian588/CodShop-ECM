@@ -2,13 +2,8 @@ import Cart from "./Cart";
 import { useCart } from "./Hooks/useCart";
 import { useState } from "react";
 
-function CartIcon() {
-  const [showCart, setShowCart] = useState(false);
+function CartIcon({ showCart, onClick }) {
   const { cart } = useCart();
-
-  const handleShowCart = () => {
-    setShowCart(!showCart);
-  };
 
   const classShowCart = showCart ? "cart show-cart" : "cart";
 
@@ -17,7 +12,7 @@ function CartIcon() {
       <button
         type="button"
         className="header__cart"
-        onClick={handleShowCart}
+        onClick={onClick}
         aria-label="Abrir Carrito de compras"
       >
         <label>
@@ -25,7 +20,7 @@ function CartIcon() {
           <span>{cart.length || 0}</span>
         </label>
       </button>
-      <Cart className={classShowCart} closeCart={handleShowCart}></Cart>
+      <Cart className={classShowCart} closeCart={onClick}></Cart>
     </div>
   );
 }
