@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "../css/formcomprar.css";
+import "../CSS/formcomprar.css";
 import AddMinus from "./AddMinus";
-import { useCart } from "./Hooks/useCart";
+import { useCart } from "../Hooks/useCart";
 
 function FormComprar({ producto, showAdd = false }) {
   const consola = producto.consola.split("|");

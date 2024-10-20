@@ -1,9 +1,8 @@
-import "../css/cart.css";
+import "../CSS/cart.css";
 import CartItem from "./CartItem";
-import { useCart } from "./Hooks/useCart";
+import { useCart } from "../Hooks/useCart";
 import { useEffect, useState } from "react";
-import useFormattedPrice from "./Hooks/useFormattedPrice";
-import { Link } from "react-router-dom";
+import useFormattedPrice from "../Hooks/useFormattedPrice";
 
 function Cart({ className, closeCart }) {
   const { cart } = useCart();

@@ -75,6 +75,7 @@
 
     & .login-sm {
       width: 100%;
+      max-width: 70rem;
       padding-block: 1rem;
       font-size: 2rem;
       align-items: center;

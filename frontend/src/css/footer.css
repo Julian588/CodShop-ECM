@@ -3,7 +3,7 @@
   height: 17rem;
   padding: 2rem 5rem;
   background-color: var(--color-primary);
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: start;
 
@@ -41,6 +41,23 @@
 
     & .redes {
       font-size: 3.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .footer-container {
+    flex-direction: column;
+    height: auto;
+    gap: 2rem;
+
+    & .categories {
+      width: 100%;
+      border-bottom: 1px solid var(--color-terceary);
+
+      & h3 {
+        font-size: 2rem;
+      }
     }
   }
 }

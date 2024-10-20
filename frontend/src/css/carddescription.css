@@ -126,3 +126,48 @@
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  .description-container .card-description-container {
+    flex-direction: column;
+    padding: 2rem;
+
+    & .caratula-container {
+      width: 100%;
+      order: 2;
+
+      & h2 {
+        font-size: 3rem;
+      }
+
+      & p {
+        font-size: 1.8rem;
+      }
+    }
+
+    & .comprar-container {
+      width: 100%;
+      order: 1;
+      padding: 0;
+
+      & .juego-titulo {
+        font-size: 3rem;
+      }
+
+      & .form-container {
+        width: 100%;
+      }
+
+      & .licencia-primaria,
+      .licencia-secundaria {
+        & h3 {
+          font-size: 2rem;
+        }
+
+        & p {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

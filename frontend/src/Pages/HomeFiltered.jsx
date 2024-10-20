@@ -1,9 +1,9 @@
-import Card from "./Card";
-import useScrollToTop from "./Hooks/useScrollToTop";
-import useProducts from "./Hooks/useProducts";
+import Card from "../Components/Card";
+import useScrollToTop from "../Hooks/useScrollToTop";
+import useProducts from "../Hooks/useProducts";
 import { useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import "../css/homefiltered.css";
+import "../CSS/homefiltered.css";
 
 function HomeFiltered() {
   useScrollToTop();
@@ -30,7 +30,7 @@ function HomeFiltered() {
     filteredProducts.length > 0 ? "filter-container" : "filter-container empty";
 
   return (
-    <div className={containerStyles}>
+    <section className={containerStyles}>
       {filteredProducts.length > 0 ? (
         filteredProducts.map((producto) => {
           return <Card producto={producto} key={producto.id} />;
@@ -38,7 +38,7 @@ function HomeFiltered() {
       ) : (
         <h1>No hay productos</h1>
       )}
-    </div>
+    </section>
   );
 }
 

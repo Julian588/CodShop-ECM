@@ -1,9 +1,9 @@
-import "../css/card.css";
+import "../CSS/card.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import FormComprar from "./FormComprar";
-import usePorcentage from "./Hooks/usePorcentage";
+import usePorcentage from "../Hooks/usePorcentage";
 
 function Card({ producto }) {
   

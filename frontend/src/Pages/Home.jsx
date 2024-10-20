@@ -1,6 +1,6 @@
-import Banner from "./Banner";
-import SliderJuegos from "./SliderJuegos";
-import useProducts from "./Hooks/useProducts";
+import Banner from "../Components/Banner";
+import SliderJuegos from "../Components/SliderJuegos";
+import useProducts from "../Hooks/useProducts";
 import "../css/main.css";
 import "swiper/css";
 import "swiper/css/navigation";

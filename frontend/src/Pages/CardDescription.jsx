@@ -1,10 +1,10 @@
-import FormComprar from "./FormComprar";
+import FormComprar from "../Components/FormComprar";
 import { useParams } from "react-router-dom";
-import SliderJuegos from "./SliderJuegos";
-import useScrollToTop from "./Hooks/useScrollToTop";
-import usePorcentage from "./Hooks/usePorcentage";
-import "../css/carddescription.css";
-import useProducts from "./Hooks/useProducts";
+import SliderJuegos from "../Components/SliderJuegos";
+import useScrollToTop from "../Hooks/useScrollToTop";
+import usePorcentage from "../Hooks/usePorcentage";
+import "../CSS/carddescription.css";
+import useProducts from "../Hooks/useProducts";
 
 function CardDescription() {
   useScrollToTop();

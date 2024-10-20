@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import ToastMessage from "../Toast";
+import ToastMessage from "../Components/Toast";
 
 export const cartContext = createContext();
 

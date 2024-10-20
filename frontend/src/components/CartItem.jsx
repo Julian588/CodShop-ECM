@@ -1,8 +1,8 @@
 import AddMinus from "./AddMinus";
-import usePorcentage from "./Hooks/usePorcentage";
-import useFormattedPrice from "./Hooks/useFormattedPrice";
+import usePorcentage from "../Hooks/usePorcentage";
+import useFormattedPrice from "../Hooks/useFormattedPrice";
 import { Link } from "react-router-dom";
-import { useCart } from "./Hooks/useCart";
+import { useCart } from "../Hooks/useCart";
 import { useEffect, useState } from "react";
 
 function CartItem({ producto }) {

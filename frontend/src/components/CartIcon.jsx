@@ -1,6 +1,5 @@
 import Cart from "./Cart";
-import { useCart } from "./Hooks/useCart";
-import { useState } from "react";
+import { useCart } from "../Hooks/useCart";
 
 function CartIcon({ showCart, onClick }) {
   const { cart } = useCart();

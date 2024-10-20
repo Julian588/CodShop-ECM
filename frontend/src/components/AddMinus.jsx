@@ -1,6 +1,6 @@
-import "../css/addminus.css";
+import "../CSS/addminus.css";
 import { useEffect, useState } from "react";
-import { useCart } from "./Hooks/useCart";
+import { useCart } from "../Hooks/useCart";
 
 function AddMinus({ producto }) {
   const { updateItemQuantity } = useCart();

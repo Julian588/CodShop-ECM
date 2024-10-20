@@ -1,13 +1,13 @@
-import Header from "./components/Header";
-import Home from "./components/Home";
-import Footer from "./components/Footer";
-import HomeFiltered from "./components/HomeFiltered";
-import CardDescription from "./components/CardDescription";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Header from "./Components/Header";
+import Home from "./Pages/Home";
+import Footer from "./Components/Footer";
+import HomeFiltered from "./Pages/HomeFiltered";
+import CardDescription from "./Pages/CardDescription";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 import { Routes, Route } from "react-router-dom";
-import ProductsProvider from "./components/context/productsContext";
-import CartProvider from "./components/context/cartContext";
+import ProductsProvider from "./Context/productsContext";
+import CartProvider from "./Context/cartContext";
 import "swiper/css/bundle";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -34,9 +34,9 @@ function App() {
           </Routes>
         </main>
         <Footer></Footer>
-        {/* <a href="#" className="wpp-btn">
+        <a href="#" className="wpp-btn">
           <img src="/assets/whatsapp.svg" alt="Whatsapp Icono Link" />
-        </a> */}
+        </a>
       </CartProvider>
     </ProductsProvider>
   );

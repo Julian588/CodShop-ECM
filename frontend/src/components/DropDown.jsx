@@ -137,7 +137,9 @@ function DropDown({ isSm }) {
       ) : (
         //#endregion
         <nav className="nav-container-sm">
-          <Link className="ul-title">PS5</Link>
+          <Link to={"/juegos/filtro/PS5/all"} className="ul-title">
+            PS5
+          </Link>
           <ul className="nav-ul ul-ps5">
             <li>
               <Link className="nav-ul-li" to={"/juegos/filtro/PS5/Accion"}>
@@ -194,7 +196,9 @@ function DropDown({ isSm }) {
               </Link>
             </li>
           </ul>
-          <Link className="ul-title">PS4</Link>
+          <Link to={"/juegos/filtro/PS4/all"} className="ul-title">
+            PS4
+          </Link>
           <ul className="nav-ul ul-ps4">
             <li>
               <Link className="nav-ul-li" to={"/juegos/filtro/PS4/Accion"}>
@@ -266,7 +270,9 @@ function DropDown({ isSm }) {
               <Link className="nav-ul-li">Xbox Gold</Link>
             </li>
           </ul>
-          <Link className="ul-title">Ofertas</Link>
+          <Link to={"/juegos/filtro/true"} className="ul-title">
+            Ofertas
+          </Link>
         </nav>
       )}
     </>

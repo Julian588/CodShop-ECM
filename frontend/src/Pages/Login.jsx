@@ -1,7 +1,7 @@
+import useScrollToTop from "../Hooks/useScrollToTop";
 import { useId } from "react";
-import useScrollToTop from "./Hooks/useScrollToTop";
-import "../css/login-registro.css";
 import { Link } from "react-router-dom";
+import "../CSS/login-registro.css";
 
 function Login() {
   useScrollToTop();
@@ -28,14 +28,9 @@ function Login() {
         </div>
         <div className="btn-container">
           <button className="btn-iniciar btn">Iniciar Sesión</button>
-          <div>
-            <Link to={"/register"} className="btn-registrarse btn">
-              Registrarse
-            </Link>
-            <span>
-              No tienes una cuenta? <span>Regístrate</span>
-            </span>
-          </div>
+          <Link to={"/register"} className="btn-registrarse btn">
+            Registrarse
+          </Link>
         </div>
       </form>
     </section>
