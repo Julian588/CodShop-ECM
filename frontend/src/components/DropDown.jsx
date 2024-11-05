@@ -17,7 +17,7 @@ function DropDown({ isSm }) {
               <ul className="dropdown">
                 <div>
                   <li>
-                    <Link to={"/juegos/filtro/PS5/Accion"}>Accion</Link>
+                    <Link to={"/juegos/filtro/PS5/Accion"}>Acción</Link>
                   </li>
                   <li>
                     <Link to={"/juegos/filtro/PS5/Aventura"}>Aventura</Link>
@@ -54,7 +54,7 @@ function DropDown({ isSm }) {
                     <Link to={"/juegos/filtro/PS5/Carreras"}>Carreras</Link>
                   </li>
                   <li>
-                    <Link to={"/juegos/filtro/PS5/Simulacion"}>Simulacion</Link>
+                    <Link to={"/juegos/filtro/PS5/Simulacion"}>Simulación</Link>
                   </li>
                 </div>
               </ul>
@@ -69,7 +69,7 @@ function DropDown({ isSm }) {
               <ul className="dropdown">
                 <div>
                   <li>
-                    <Link to={"/juegos/filtro/PS4/Accion"}>Accion</Link>
+                    <Link to={"/juegos/filtro/PS4/Accion"}>Acción</Link>
                   </li>
                   <li>
                     <Link to={"/juegos/filtro/PS4/Aventura"}>Aventura</Link>
@@ -108,14 +108,14 @@ function DropDown({ isSm }) {
                     <Link to={"/juegos/filtro/PS4/Carreras"}>Carreras</Link>
                   </li>
                   <li>
-                    <Link to={"/juegos/filtro/PS4/Simulacion"}>Simulacion</Link>
+                    <Link to={"/juegos/filtro/PS4/Simulacion"}>Simulación</Link>
                   </li>
                 </div>
               </ul>
             </li>
             <li className="dropdown-container_li_ps5">
               <Link to={"/juegos/Membresias/all"}>
-                Membresias
+                Membresías
                 <span>
                   <i className="fa-solid fa-caret-down arrow"></i>
                 </span>
@@ -143,7 +143,7 @@ function DropDown({ isSm }) {
           <ul className="nav-ul ul-ps5">
             <li>
               <Link className="nav-ul-li" to={"/juegos/filtro/PS5/Accion"}>
-                Accion
+                Acción
               </Link>
             </li>
             <li>
@@ -192,7 +192,7 @@ function DropDown({ isSm }) {
             </li>
             <li>
               <Link className="nav-ul-li" to={"/juegos/filtro/PS5/Simulacion"}>
-                Simulacion
+                Simulación
               </Link>
             </li>
           </ul>
@@ -202,7 +202,7 @@ function DropDown({ isSm }) {
           <ul className="nav-ul ul-ps4">
             <li>
               <Link className="nav-ul-li" to={"/juegos/filtro/PS4/Accion"}>
-                Accion
+                Acción
               </Link>
             </li>
             <li>
@@ -257,7 +257,7 @@ function DropDown({ isSm }) {
             </li>
             <li>
               <Link className="nav-ul-li" to={"/juegos/filtro/PS4/Simulacion"}>
-                Simulacion
+                Simulación
               </Link>
             </li>
           </ul>

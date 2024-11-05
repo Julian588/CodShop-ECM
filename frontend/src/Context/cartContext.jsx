@@ -11,7 +11,6 @@ function CartProvider({ children }) {
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  //addCart Method
   const addCart = (product, licencia, consola) => {
     const productsInCartIndex = cart.findIndex(
       (item) =>
@@ -33,7 +32,6 @@ function CartProvider({ children }) {
     setToastVisible(true);
   };
 
-  //removeFromCart Method
   const removeFromCart = (product, consola, licencia) => {
     setCart((prevCart) =>
       prevCart.filter(
@@ -48,7 +46,6 @@ function CartProvider({ children }) {
     product.cantidad = 0;
   };
 
-  //updateItemQuantity Method
   const updateItemQuantity = (id, newQuantity, consola, licencia) => {
     setCart((prevCart) =>
       prevCart.map((item) =>

@@ -7,6 +7,8 @@
   position: relative;
   transition: var(--transition-1);
   background-color: var(--color-terceary);
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 
   & .card-caratula {
     width: 100%;
@@ -71,7 +73,7 @@
 
       & .card-price-org {
         font-size: 2rem;
-        color: #555;
+        color: var(--color-quartery);
       }
     }
 
@@ -159,7 +161,7 @@
 }
 
 @media screen and (max-width: 640px) {
-  .card-container{
+  .card-container {
     width: 29rem;
     height: 52rem;
   }

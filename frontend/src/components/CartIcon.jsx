@@ -16,7 +16,7 @@ function CartIcon({ showCart, onClick }) {
       >
         <label>
           <i className="fa-solid fa-cart-shopping"></i>
-          <span>{cart.length || 0}</span>
+          <span className="quantity">{cart.length || 0}</span>
         </label>
       </button>
       <Cart className={classShowCart} closeCart={onClick}></Cart>

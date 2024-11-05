@@ -5,38 +5,43 @@ import HomeFiltered from "./Pages/HomeFiltered";
 import CardDescription from "./Pages/CardDescription";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-import { Routes, Route } from "react-router-dom";
 import ProductsProvider from "./Context/productsContext";
-import CartProvider from "./Context/cartContext";
+import CartProvider from "./context/cartContext";
+import AdminDashboard from "./Pages/admin/AdminDashboard";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "swiper/css/bundle";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.includes("/admin/dashboard");
+
+  console.log(location);
   return (
     <ProductsProvider>
       <CartProvider>
-        <Header></Header>
+        {!isAdminRoute && <Header />}
         <main>
           <Routes>
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/" element={<Home />} />
             <Route
               path="/juegos/filtro/:consola/:genero/"
               element={<HomeFiltered />}
-            ></Route>
-            <Route
-              path="/juegos/filtro/:ofertas"
-              element={<HomeFiltered />}
-            ></Route>
-            <Route path="/juegos/search" element={<HomeFiltered />}></Route>
-            <Route path="/juegos/:id" element={<CardDescription />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register />}></Route>
+            />
+            <Route path="/juegos/filtro/:ofertas" element={<HomeFiltered />} />
+            <Route path="/juegos/search" element={<HomeFiltered />} />
+            <Route path="/juegos/:id" element={<CardDescription />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/admin/dashboard/*" element={<AdminDashboard />} />
           </Routes>
         </main>
-        <Footer></Footer>
-        <a href="#" className="wpp-btn">
-          <img src="/assets/whatsapp.svg" alt="Whatsapp Icono Link" />
-        </a>
+        {!isAdminRoute && <Footer />}
+        {!isAdminRoute && (
+          <a href="#" className="wpp-btn">
+            <img src="/public/whatsapp.svg" alt="Whatsapp Icono Link" />
+          </a>
+        )}
       </CartProvider>
     </ProductsProvider>
   );

@@ -25,7 +25,6 @@ function Card({ producto }) {
     : "card-container-comprar";
 
   return (
-    <>
       <figure className="card-container">
         <div className="card-caratula">
           <div className="img-container">
@@ -89,7 +88,6 @@ function Card({ producto }) {
           </button>
         </div>
       </figure>
-    </>
   );
 }
 

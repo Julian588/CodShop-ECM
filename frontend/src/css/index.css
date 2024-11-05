@@ -3,7 +3,7 @@
 :root {
   --color-primary: #1087ff;
   --color-secundary: #6db0f392;
-  --color-terceary: #efefef;
+  --color-terceary: #f3f3f3;
   --color-quartery: #585858;
 
   --transition-1: all 200ms ease;
@@ -21,12 +21,21 @@
   list-style: none;
 }
 
-body {
+html {
   overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
+}
+
+dl, ol, ul{
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button{
+  display: none;
 }
 
 .wpp-btn {

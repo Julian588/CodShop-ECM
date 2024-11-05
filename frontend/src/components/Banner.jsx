@@ -1,6 +1,6 @@
-import Img2 from "../../public/assets/bannerp2.webp";
-import Img3 from "../../public/assets/bannerp3.webp";
-import Img1 from "../../public/assets/bannerp1.webp";
+import Img2 from "/public/bannerp2.webp";
+import Img3 from "/public/bannerp3.webp";
+import Img1 from "/public/bannerp1.webp";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import {

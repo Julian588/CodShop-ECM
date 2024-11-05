@@ -1,5 +1,5 @@
 import "../CSS/header.css";
-import Logo from "../../public/assets/logo.webp";
+import Logo from "/public/logo.webp";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
 import DropDown from "./DropDown";
@@ -30,7 +30,6 @@ function Header() {
       }
     };
 
-    // Agrega el event listener
     document.addEventListener("click", handleClickOutside);
 
     return () => {
@@ -44,10 +43,7 @@ function Header() {
 
   return (
     <>
-      <header
-        className="header-container lg"
-        style={!showCart ? { overflow: "hidden" } : { overflow: "visible" }}
-      >
+      <header className="header-container lg">
         <div className="main_header">
           <Link to={"/"}>
             <img src={Logo} alt="Logo de la Pagina" />

@@ -134,8 +134,13 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       color: var(--color-primary);
       font-size: 3rem;
+
+      & span{
+        align-self: center;
+      }
     }
 
     & .btn-more,
