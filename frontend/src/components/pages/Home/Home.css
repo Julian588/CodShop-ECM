@@ -1,0 +1,21 @@
+.swiper-button-prev::after,
+.swiper-button-next::after,
+.swiper-button-prev::before,
+.swiper-button-next::before {
+  display: none;
+}
+
+.swiper-slide {
+  width: auto;
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--color-quartery) !important;
+}
+
+.main-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding-inline: 2rem;
+}
+

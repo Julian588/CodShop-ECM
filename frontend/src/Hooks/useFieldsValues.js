@@ -4,14 +4,14 @@ function useFieldsValues(initialState) {
   const [fields, setFields] = useState(initialState);
 
   const handleFieldChange = (e, name) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setFields({
       ...fields,
       [name]: value,
     });
   };
 
-  return [fields, handleFieldChange];
+  return [fields, setFields, handleFieldChange];
 }
 
 export default useFieldsValues;

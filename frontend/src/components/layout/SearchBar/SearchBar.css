@@ -1,0 +1,55 @@
+.input__container {
+  width: 100%;
+  max-width: 70rem;
+  margin-left: 3rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-terceary);
+  border-radius: 10px;
+  transition: var(--transition-1);
+  padding: 0.8rem;
+
+  & input {
+    height: 100%;
+    outline: none;
+    border: none;
+    width: 90%;
+    font-size: 1.8rem;
+    background-color: transparent;
+  }
+
+  & .button-search {
+    border: none;
+    font-size: 3rem;
+    color: var(--color-quartery);
+    background-color: transparent;
+    cursor: pointer;
+    transition: var(--transition-1);
+  }
+}
+
+.input__container input::placeholder {
+  font-size: 1.8rem;
+  color: #888;
+  transition: var(--transition-1);
+}
+
+.input__container:has(.buscador:focus) {
+  background-color: var(--color-terceary);
+  transform: scale(1.02);
+
+  & button {
+    color: var(--color-quartery);
+  }
+  input::placeholder {
+    color: transparent;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .input__container {
+    margin-left: 0;
+  }
+}

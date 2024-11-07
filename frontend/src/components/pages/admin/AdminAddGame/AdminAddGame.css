@@ -1,0 +1,232 @@
+.add-game-form {
+  padding: 3rem;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 1fr));
+  grid-template-rows: repeat(2, minmax(auto, 1fr));
+  gap: 1rem;
+
+  & .info-game {
+    background-color: var(--color-terceary);
+    border: 2px solid var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-row: span 2;
+    padding: 3rem;
+    border-radius: 10px;
+    gap: 2rem;
+
+    & .title-info_game {
+      font-size: 3.2rem;
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    & .form-separator {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+
+      & .isOffer-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: flex-start;
+        gap: 2rem;
+
+        & .checkbox-wrapper {
+          position: relative;
+          display: inline-block;
+          width: 3rem;
+          height: 3rem;
+
+          & .background {
+            fill: var(--color-primary);
+            transition: ease all 0.6s;
+            -webkit-transition: ease all 0.6s;
+          }
+
+          & .stroke {
+            fill: none;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            stroke-width: 2px;
+            stroke-dashoffset: 100;
+            stroke-dasharray: 100;
+            transition: ease all 0.6s;
+            -webkit-transition: ease all 0.6s;
+          }
+
+          & .check {
+            fill: none;
+            stroke: #fff;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2px;
+            stroke-dashoffset: 22;
+            stroke-dasharray: 22;
+            transition: ease all 0.6s;
+            -webkit-transition: ease all 0.6s;
+          }
+
+          & input[type="checkbox"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            margin: 0;
+            opacity: 0;
+            -appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+          }
+
+          & input[type="checkbox"]:checked + svg .background {
+            fill: var(--color-primary);
+          }
+
+          & input[type="checkbox"]:checked + svg .stroke {
+            stroke-dashoffset: 0;
+          }
+
+          & input[type="checkbox"]:checked + svg .check {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        & label {
+          font-size: 1.8rem;
+          color: var(--color-quartery);
+        }
+      }
+
+      & .checkbox-wrapper:hover .check {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+
+  & .class-game {
+    max-width: 76.1rem;
+    background-color: var(--color-terceary);
+    border: 2px solid var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 3rem;
+    border-radius: 10px;
+    gap: 2rem;
+
+    & .title-class_game {
+      font-size: 3rem;
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    & .select-container {
+      display: flex;
+      flex-direction: column;
+
+      & label {
+        font-size: 2rem;
+        color: var(--color-quartery);
+      }
+
+      & .select-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        gap: 1.5rem;
+
+        & .field-select {
+          width: 18.2rem;
+          height: 3.5rem;
+          font-size: 2rem;
+          border-radius: 10px;
+          padding-inline: 2rem;
+          color: var(--color-quartery);
+          cursor: pointer;
+        }
+
+        & .btn-add-select {
+          min-width: 3rem;
+          min-height: 3rem;
+          border: none;
+          background-color: var(--color-primary);
+          color: var(--color-terceary);
+          border-radius: 5px;
+          font-size: 2rem;
+          margin-bottom: 0.3rem;
+        }
+
+        & .delete-select {
+          border: none;
+          padding: 0.5rem;
+          min-width: 2.2rem;
+          min-height: 2.2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 100%;
+          background-color: var(--color-quartery);
+          color: var(--color-terceary);
+          visibility: hidden;
+          opacity: 0;
+          transition: var(--transition-1);
+          margin-bottom: 0.7rem;
+        }
+      }
+
+      & .select-wrapper:hover .delete-select {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  & .image-game {
+    background-color: var(--color-terceary);
+    border: 2px solid var(--color-primary);
+    padding: 3rem;
+    border-radius: 10px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+
+  & .btn-container {
+    height: 8rem;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+
+    & .btn {
+      width: 13rem;
+      height: rem;
+      border: none;
+      outline: none;
+      font-size: 1.8rem;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      background-color: var(--color-terceary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    & .btn-save {
+      color: var(--color-terceary);
+      background-color: var(--color-primary);
+    }
+  }
+}

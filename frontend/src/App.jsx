@@ -1,14 +1,9 @@
-import Header from "./Components/Header";
-import Home from "./Pages/Home";
-import Footer from "./Components/Footer";
-import HomeFiltered from "./Pages/HomeFiltered";
-import CardDescription from "./Pages/CardDescription";
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
+import Header from "@common/Header/Header";
+import Footer from "@common/Footer/Footer";
 import ProductsProvider from "./Context/productsContext";
 import CartProvider from "./context/cartContext";
-import AdminDashboard from "./Pages/admin/AdminDashboard";
-import { Routes, Route, useLocation } from "react-router-dom";
+import AppRouter from "@routes/AppRouter";
+import { useLocation } from "react-router-dom";
 import "swiper/css/bundle";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -16,25 +11,12 @@ function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.includes("/admin/dashboard");
 
-  console.log(location);
   return (
     <ProductsProvider>
       <CartProvider>
         {!isAdminRoute && <Header />}
         <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/juegos/filtro/:consola/:genero/"
-              element={<HomeFiltered />}
-            />
-            <Route path="/juegos/filtro/:ofertas" element={<HomeFiltered />} />
-            <Route path="/juegos/search" element={<HomeFiltered />} />
-            <Route path="/juegos/:id" element={<CardDescription />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/admin/dashboard/*" element={<AdminDashboard />} />
-          </Routes>
+          <AppRouter />
         </main>
         {!isAdminRoute && <Footer />}
         {!isAdminRoute && (
