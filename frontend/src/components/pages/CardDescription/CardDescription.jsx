@@ -1,5 +1,5 @@
 import "./CardDescription.css";
-import FormComprar from "@layout/FormComprar/FormComprar";
+import AddToCart from "@layout/AddToCart/AddToCart";
 import SliderJuegos from "@layout/SliderJuegos/SliderJuegos";
 import useScrollToTop from "@hooks/useScrollToTop";
 import usePorcentage from "@hooks/usePorcentage";
@@ -36,8 +36,6 @@ function CardDescription() {
                 <></>
               )}
             </div>
-            <h2>Descripción</h2>
-            <p>{productoARenderizar.descripcion}</p>
           </figure>
           <div className="comprar-container">
             <h1 className="juego-titulo">{productoARenderizar.nombre}</h1>
@@ -70,19 +68,21 @@ function CardDescription() {
               </span>
             )}
             <div className="form-container">
-              <FormComprar
-                producto={productoARenderizar}
-                showAdd={true}
-              ></FormComprar>
+              <AddToCart producto={productoARenderizar}></AddToCart>
             </div>
-            <div className="licencia-primaria">
+            <div className="licencia">
+              <h3 className="description-h2">Descripción</h3>
+              <p className="description-p">{productoARenderizar.descripcion}</p>
+            </div>
+
+            <div className="licencia-primaria licencia">
               <h3>Licencia Primaria</h3>
               <p>
                 El juego queda en tu consola y juegas desde tu perfil. Puedes
                 jugar con/o sin conexión a internet
               </p>
             </div>
-            <div className="licencia-secundaria">
+            <div className="licencia-secundaria licencia">
               <h3>Licencia Secundaria</h3>
               <p>
                 El juego queda en tu consola y juegas desde el perfil asignado.

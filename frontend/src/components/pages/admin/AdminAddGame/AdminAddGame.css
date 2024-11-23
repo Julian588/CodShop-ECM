@@ -25,6 +25,22 @@
       font-weight: bold;
     }
 
+    & .label-description {
+      font-size: 2rem;
+      color: var(--color-quartery);
+    }
+
+    & .text-description {
+      height: 15.8rem;
+      min-height: 3.5rem;
+      max-height: 15.8rem;
+      outline: none;
+      padding-inline: 1rem;
+      border-radius: 10px;
+      font-size: 2rem;
+      color: var(--color-quartery);
+    }
+
     & .form-separator {
       width: 100%;
       display: flex;

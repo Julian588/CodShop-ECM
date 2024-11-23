@@ -1,10 +1,10 @@
 import { useState, useMemo } from "react";
 
-function useProductFilters(products) {
+function useProductFilters(games) {
   const [filters, setFilters] = useState({
-    consola: "all",
-    genero: "all",
-    oferta: false,
+    game_console: "all",
+    game_gender: "all",
+    is_offer: false,
     query: "",
     search: false,
     maxPrice: 100.0,
@@ -17,49 +17,50 @@ function useProductFilters(products) {
     }));
   };
 
-  const filterParams = (products, { consola, genero, oferta }) => {
-    return products.filter((producto) => {
-      const isOferta = oferta === true;
-      if (!isOferta) {
+  const filterParams = (games, { game_console, game_gender, is_offer }) => {
+    return games.filter((game) => {
+      const isOffer = is_offer === true;
+      if (!isOffer) {
         return (
-          (producto.consola.includes(consola) || consola === "all") &&
-          (producto.genero.includes(genero) || genero === "all") &&
-          (producto.precio || producto.precioOferta) < filters.maxPrice
+          (game.game_console.includes(game_console) ||
+            game_console === "all") &&
+          (game.game_gender.includes(game_gender) || game_gender === "all") &&
+          game.precio < filters.maxPrice
         );
       } else {
         return (
-          producto.oferta === isOferta &&
-          (producto.consola.includes(consola) || consola === "all") &&
-          (producto.genero.includes(genero) || genero === "all") &&
-          (producto.precio || producto.precioOferta) < filters.maxPrice
+          game.is_offer === isOffer &&
+          (game.game_console.includes(game_console) ||
+            game_console === "all") &&
+          (game.game_gender.includes(game_gender) || game_gender === "all") &&
+          game.precio < filters.maxPrice
         );
       }
     });
   };
 
-  const filterSearch = (products, query) => {
-    return products.filter((producto) => {
-      const productoGenero = producto.genero.toLowerCase();
-      const productoNombre = producto.nombre.toLowerCase();
+  const filterSearch = (games, query) => {
+    return games.filter((producto) => {
+      const gameGender = producto.game_gender.toLowerCase();
+      const gameName = producto.game_name.toLowerCase();
       const queryLowerCase = query.toLowerCase();
       return (
-        productoGenero.includes(queryLowerCase) ||
-        productoNombre.includes(queryLowerCase)
+        gameGender.includes(queryLowerCase) || gameName.includes(queryLowerCase)
       );
     });
   };
 
-  const filteredProducts = useMemo(() => {
-    const { consola, genero, oferta, query } = filters;
+  const filteredGames = useMemo(() => {
+    const { game_console, game_gender, is_offer, query } = filters;
     if (filters.search) {
-      return filterSearch(products, query);
+      return filterSearch(games, query);
     } else {
-      return filterParams(products, { consola, genero, oferta });
+      return filterParams(games, { game_console, game_gender, is_offer });
     }
-  }, [products, filters]);
+  }, [games, filters]);
 
   return {
-    filteredProducts,
+    filteredGames,
     filters,
     updateFilters,
   };

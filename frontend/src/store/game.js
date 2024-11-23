@@ -7,12 +7,20 @@ export const useGameStore = create((set) => ({
     if (
       !newGame.game_name ||
       !newGame.price_primary ||
-      !newGame.stock ||
+      !newGame.game_stock ||
       !newGame.game_gender ||
       !newGame.game_console
     ) {
       return { success: false, message: "Por favor llenar todo los campos" };
     }
+    console.log(newGame);
+
+    if (!newGame.is_offer && newGame.percentage_offer)
+      return {
+        success: false,
+        message:
+          "No puede haber un porcentaje de la oferta si el juego no esta en oferta.",
+      };
 
     const res = await fetch("/api/games", {
       method: "POST",
@@ -22,15 +30,15 @@ export const useGameStore = create((set) => ({
     const data = await res.json();
     set((state) => ({ games: [...state.games, data.data] }));
 
-    return { success: true, message: "Juego creado exitosamente" };
+    return { success: true, message: "Juego Creado exitosamente" };
   },
-  fetchProducts: async () => {
+  fetchGames: async () => {
     const res = await fetch("/api/games");
     const data = await res.json();
 
     set({ games: data.data });
   },
-  deleteProduct: async (gid) => {
+  deleteGame: async (gid) => {
     const res = await fetch(`/api/games/${gid}`, { method: "DELETE" });
     const data = await res.json();
 
@@ -41,7 +49,7 @@ export const useGameStore = create((set) => ({
     }));
     return { success: true, message: data.message };
   },
-  updateProduct: async (gid, updatedProduct) => {
+  updateGame: async (gid, updatedProduct) => {
     const res = await fetch(`/api/games/${gid}`, {
       method: "PUT",
       headers: {

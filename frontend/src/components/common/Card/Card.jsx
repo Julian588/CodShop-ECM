@@ -2,7 +2,7 @@ import "./Card.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import FormComprar from "@layout/FormComprar/FormComprar";
+import AddToCart from "@layout/AddToCart/AddToCart";
 import usePorcentage from "@hooks/usePorcentage";
 
 function Card({ producto }) {
@@ -80,7 +80,7 @@ function Card({ producto }) {
         </div>
       </div>
       <div className={comprarContainerStyles}>
-        <FormComprar producto={producto} />
+        <AddToCart producto={producto} />
         <button type="button" onClick={handleOnClick}>
           <i className="fa-solid fa-circle-xmark"></i>
         </button>

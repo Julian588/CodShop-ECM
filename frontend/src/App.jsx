@@ -6,6 +6,7 @@ import AppRouter from "@routes/AppRouter";
 import { useLocation } from "react-router-dom";
 import "swiper/css/bundle";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Toaster } from "sonner";
 
 function App() {
   const location = useLocation();
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <ProductsProvider>
+      <Toaster />
       <CartProvider>
         {!isAdminRoute && <Header />}
         <main>

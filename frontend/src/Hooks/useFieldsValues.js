@@ -1,17 +1,18 @@
 import { useState } from "react";
 
 function useFieldsValues(initialState) {
-  const [fields, setFields] = useState(initialState);
+  const [inputValues, setInputValues] = useState(initialState);
 
-  const handleFieldChange = (e, name) => {
-    const value = e.target.value.trim();
-    setFields({
-      ...fields,
+  const handleInputChange = (e, name) => {
+    const value = e.target.value;
+    setInputValues({
+      ...inputValues,
       [name]: value,
     });
+    console.log(inputValues);
   };
 
-  return [fields, setFields, handleFieldChange];
+  return [inputValues, setInputValues, handleInputChange];
 }
 
 export default useFieldsValues;

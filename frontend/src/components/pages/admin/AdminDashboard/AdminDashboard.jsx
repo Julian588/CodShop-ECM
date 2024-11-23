@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import useProductFilters from "@hooks/useProductFilters";
 import AsideFilter from "@common/admin/AsideFilter/AsideFilter";
 import AdminRouter from "@routes/admin/AdminRouter";
+import { useGameStore } from "@store/game";
 
 function AdminDashboard() {
   //#region Product filter - Lógica necesaria para crear el filtrado del producto.
-  const { filteredProducts, updateFilters } = useProductFilters(Products);
+  const { fetchGames, games } = useGameStore();
+  const { filteredGames, updateFilters } = useProductFilters(games);
   const [filterGenero, setFilterGenero] = useState("all");
   const [filterConsola, setFilterConsola] = useState("all");
   const [filterPrice, setFilterPrice] = useState(99);
@@ -22,6 +24,11 @@ function AdminDashboard() {
     filterOferta: filterOferta,
     filterQuery: filterQuery,
   };
+
+  useEffect(() => {
+    fetchGames();
+  }, [fetchGames]);
+  console.log(games);
 
   const handleIsOferta = (e) => {
     setFilterOferta(e.target.checked ? true : false);
@@ -36,10 +43,10 @@ function AdminDashboard() {
 
   useEffect(() => {
     updateFilters({
-      consola: filterConsola,
-      genero: filterGenero,
+      game_console: filterConsola,
+      game_gender: filterGenero,
+      is_offer: filterOferta,
       maxPrice: filterPrice,
-      oferta: filterOferta,
       search: false,
     });
   }, [filterGenero, filterConsola, filterPrice, filterOferta]);
@@ -79,7 +86,7 @@ function AdminDashboard() {
           handleOnSubmit={handleOnSubmit}
           handleIsOferta={handleIsOferta}
         />
-        <AdminRouter filteredProducts={filteredProducts} filters={filters} />
+        <AdminRouter filteredGames={games} filters={filters} />
       </section>
     </>
   );

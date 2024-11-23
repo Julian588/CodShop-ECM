@@ -6,6 +6,10 @@ const gameSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
+    full_game_name: {
+      type: String,
+      require: true,
+    },
     price_primary: {
       type: Number,
       require: true,
@@ -35,6 +39,10 @@ const gameSchema = new mongoose.Schema(
       require: true,
     },
     game_console: {
+      type: String,
+      require: true,
+    },
+    game_description: {
       type: String,
       require: true,
     },

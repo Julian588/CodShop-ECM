@@ -40,7 +40,7 @@ function FormField({
           id={id}
           onChange={onChange}
         >
-          <option value={defaultValue} selected disabled></option>
+          <option value="" selected></option>
           {options.map((option) => {
             return (
               <option value={option.value} key={option.value}>

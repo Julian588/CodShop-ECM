@@ -1,17 +1,14 @@
-import ProductSection from "@pages/admin/AdminGames/AdminGames";
+import AdminAddGames from "@pages/admin/AdminGames/AdminGames";
 import AddProductForm from "@pages/admin/AdminAddGame/AdminAddGame";
 import { Route, Routes } from "react-router-dom";
 
-function AdminRouter({ filteredProducts, filters }) {
+function AdminRouter({ filteredGames, filters }) {
   return (
     <Routes>
       <Route
         path="/"
         element={
-          <ProductSection
-            filteredProducts={filteredProducts}
-            filters={filters}
-          />
+          <AdminAddGames filteredGames={filteredGames} filters={filters} />
         }
       />
       <Route path="/add" element={<AddProductForm />} />

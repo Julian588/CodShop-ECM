@@ -1,27 +1,27 @@
 .filter-container {
-    height: auto;
-    min-height: 68.8vh;
+  height: auto;
+  min-height: 68.8vh;
+  width: 100%;
+  gap: 2rem;
+  padding-block: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+  place-items: center;
+  display: grid;
+  position: relative;
+
+  & h1 {
+    height: calc(87.9vh - 13rem - 17rem);
     width: 100%;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
-    place-items: center;
-    display: grid;
-    position: relative;
-  
-    & h1 {
-      height: calc(87.9vh - 13rem - 17rem);
-      width: 100%;
-      color: var(--color-quartery);
-      font-size: 3rem;
-      text-align: center;
-    }
+    color: var(--color-quartery);
+    font-size: 3rem;
+    text-align: center;
   }
-  
-  .empty {
-    display: block;
-  }
-  
-  .card-container {
-    margin-bottom: 2rem;
-  }
-  
+}
+
+.empty {
+  display: block;
+}
+
+.card-container {
+  margin-bottom: 2rem;
+}

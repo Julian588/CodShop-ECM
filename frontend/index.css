@@ -29,12 +29,17 @@ a {
   text-decoration: none;
 }
 
-dl, ol, ul{
+dl,
+ol,
+ul {
   margin-bottom: 0;
   padding-left: 0;
 }
 
-input[type="number"]::-webkit-inner-spin-button{
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+textarea::-webkit-resizer {
   display: none;
 }
 

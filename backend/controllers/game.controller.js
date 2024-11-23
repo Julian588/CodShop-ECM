@@ -17,11 +17,14 @@ export const createGame = async (req, res) => {
   if (
     !game.game_name ||
     !game.price_primary ||
-    !game.stock ||
+    !game.game_stock ||
     !game.game_gender ||
-    !game.game_console
+    !game.game_console ||
+    !game.game_description
   ) {
-    return { success: false, message: "Por favor llenar todo los campos" };
+    return res
+      .status(400)
+      .json({ success: false, message: "Por favor llenar todos los campos" });
   }
   const newGame = new Game(game);
 

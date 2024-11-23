@@ -1,4 +1,4 @@
-import "./SliderJuegos.css"
+import "./SliderJuegos.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -40,7 +40,7 @@ function SliderJuegos({ sectionTitle, productos, id }) {
         slidesPerView={1.2}
         centeredSlides={false}
         autoplay={{
-          disableOnInteraction: false,
+          disableOnInteraction: true,
         }}
         loop={true}
         pagination={{

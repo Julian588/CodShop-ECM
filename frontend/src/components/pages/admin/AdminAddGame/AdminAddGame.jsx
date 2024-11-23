@@ -5,64 +5,19 @@ import SelectContainer from "@layout/admin/SelectContainer/SelectContainer";
 import FormField from "@layout/FormField/FormField";
 import { Toaster, toast } from "sonner";
 import { useGameStore } from "@store/game";
+import gameGender from "@lib/gameGender";
+import gameConsole from "@lib/gameConsoles";
+import numeral from "numeral";
+import "numeral/locales/es";
 
 function AdminAddGame() {
-  const gameGender = [
-    {
-      name: "Acción",
-      value: "accion",
-    },
-    {
-      name: "Aventura",
-      value: "aventura",
-    },
-    {
-      name: "Terror",
-      value: "terror",
-    },
-    {
-      name: "Deportes",
-      value: "deportes",
-    },
-    {
-      name: "RPG",
-      value: "rpg",
-    },
-    {
-      name: "Plataformas",
-      value: "plataformas",
-    },
-    {
-      name: "Lucha",
-      value: "lucha",
-    },
-    {
-      name: "Puzzle",
-      value: "puzzle",
-    },
-    {
-      name: "Carreras",
-      value: "carreras",
-    },
-    {
-      name: "Simulación",
-      value: "simulacion",
-    },
-  ];
-  const gameConsole = [
-    {
-      name: "Play Station 5",
-      value: "PS5",
-    },
-    {
-      name: "Play Station 4",
-      value: "PS4",
-    },
-    {
-      name: "Xbox",
-      value: "XBOX",
-    },
-  ];
+  numeral.locale("es"); // Usa un idioma compatible (por ejemplo, español)
+  numeral.localeData().delimiters = {
+    thousands: ".", // Separador de miles
+    decimal: ",", // Separador decimal
+  };
+
+  const { createGame } = useGameStore();
 
   const gameNameId = useId();
   const pricePrimaryId = useId();
@@ -79,17 +34,39 @@ function AdminAddGame() {
   const [consoleValue, setConsoleValue] = useState([]);
   const [addGenderValue, setAddGenderValue] = useState([{ name: "" }]);
   const [addConsoleValue, setAddConsoleValue] = useState([{ name: "" }]);
-  const [fields, setFields, handleFieldsChange] = useFieldsValues({
+  const [valueToShow, setValueToShow] = useState({
+    price_primary: "",
+    price_secondary: "",
+  });
+  const [inputValues, setInputValues, handleInputChange] = useFieldsValues({
     game_name: "",
+    full_game_name: "",
     price_primary: "",
     price_secondary: "",
     is_offer: false,
     percentage_offer: "",
-    stock: "",
-    min_stock: "",
+    game_stock: "",
+    game_min_stock: "",
     game_gender: "",
     game_console: "",
   });
+
+  console.log(inputValues);
+
+  const handlePriceValue = (e, price) => {
+    const value = e.target.value;
+    const formatted = numeral(value).format("0,0");
+
+    const saveValue = parseInt(formatted.replace(/,/g, ""));
+    setInputValues((prevState) => ({
+      ...prevState,
+      [price]: saveValue,
+    }));
+    setValueToShow((prevState) => ({
+      ...prevState,
+      [price]: formatted,
+    }));
+  };
 
   const handleIsOffer = (e) => {
     const isChecked = e.target.checked ? true : false;
@@ -103,59 +80,80 @@ function AdminAddGame() {
       newArray[index] = value;
       return newArray;
     });
+    console.log(inputValues);
   };
 
-  const { createGame } = useGameStore();
+  const updateInputValues = (updatedValues) => {
+    return new Promise((resolve) => {
+      setInputValues((prevState) => {
+        const newState = { ...prevState, ...updatedValues };
+        resolve(newState);
+        return newState;
+      });
+    });
+  };
 
   const handleCreateGame = async (e) => {
     e.preventDefault();
     const gameGender = genderValue.join(" ");
     const gameConsole = consoleValue.join(" ");
-    fields.game_gender = gameGender;
-    fields.game_console = gameConsole;
-    fields.is_offer = isOffer;
+    const fullGameName = inputValues.game_name.split(" ").join("");
 
-    console.log(fields);
+    const updatedValues = await updateInputValues({
+      ...inputValues,
+      full_game_name: fullGameName,
+      game_gender: gameGender,
+      game_console: gameConsole,
+      is_offer: isOffer,
+    });
 
-    const { success, message } = await createGame(fields);
+    const { success, message } = await createGame(updatedValues);
     if (!success) {
       toast.error("Error", {
         description: message,
         richColors: true,
+        position: "bottom-center",
       });
     } else {
       toast.success("Éxito", {
         description: message,
         richColors: true,
+        position: "bottom-center",
       });
+      setIsOffer(false);
+      setInputValues({
+        game_name: "",
+        price_primary: "",
+        price_secondary: "",
+        is_offer: false,
+        percentage_offer: "",
+        stock: "",
+        min_stock: "",
+        game_gender: "",
+        game_console: "",
+        game_description: "",
+      });
+      setValueToShow({
+        price_primary: "",
+        price_secondary: "",
+      });
+      setAddGenderValue([{ name: "" }]);
+      setAddConsoleValue([{ name: "" }]);
     }
-
-    setIsOffer(false);
-    setFields({
-      game_name: "",
-      price_primary: "",
-      price_secondary: "",
-      is_offer: false,
-      percentage_offer: "",
-      stock: "",
-      min_stock: "",
-      game_gender: "",
-      game_console: "",
-    });
   };
 
   return (
     <>
       <Toaster />
-      <form className="add-game-form">
+      <form className="add-game-form" onSubmit={(e) => handleCreateGame(e)}>
         <div className="info-game">
           <h1 className="title-info_game">Información del Juego</h1>
           <FormField
             name={"game_name"}
             id={gameNameId}
             type={"text"}
-            value={fields.game_name}
-            onChange={(e) => handleFieldsChange(e, "game_name")}
+            value={inputValues.game_name}
+            onChange={(e) => handleInputChange(e, "game_name")}
           >
             Nombre del Juego
           </FormField>
@@ -163,24 +161,24 @@ function AdminAddGame() {
           <div className="form-separator">
             <FormField
               name={"price_primary"}
-              type={"number"}
+              type={"text"}
               id={pricePrimaryId}
               icon1={<i className="fa-solid fa-dollar-sign"></i>}
               placeholder={"0.00"}
-              value={fields.price_primary}
-              onChange={(e) => handleFieldsChange(e, "price_primary")}
+              value={valueToShow.price_primary}
+              onChange={(e) => handlePriceValue(e, "price_primary")}
             >
               Precio Licencia Primaria
             </FormField>
 
             <FormField
               name={"price_secondary"}
-              type={"number"}
+              type={"text"}
               id={priceSecondaryId}
               icon1={<i className="fa-solid fa-dollar-sign"></i>}
               placeholder={"0.00"}
-              value={fields.price_secondary}
-              onChange={(e) => handleFieldsChange(e, "price_secondary")}
+              value={valueToShow.price_secondary}
+              onChange={(e) => handlePriceValue(e, "price_secondary")}
             >
               Precio Licencia Secundaria
             </FormField>
@@ -223,8 +221,8 @@ function AdminAddGame() {
               name={"percentage_offer"}
               id={percentageOfferId}
               icon2={<i className="fa-solid fa-percent"></i>}
-              value={fields.percentage_offer}
-              onChange={(e) => handleFieldsChange(e, "percentage_offer")}
+              value={inputValues.percentage_offer}
+              onChange={(e) => handleInputChange(e, "percentage_offer")}
             >
               Porcentaje de la Oferta
             </FormField>
@@ -233,25 +231,37 @@ function AdminAddGame() {
           <div className="form-separator">
             <FormField
               type={"number"}
-              name={"stock"}
+              name={"game_stock"}
               id={stockId}
               placeholder={0}
-              value={fields.stock}
-              onChange={(e) => handleFieldsChange(e, "stock")}
+              value={inputValues.game_stock}
+              onChange={(e) => handleInputChange(e, "game_stock")}
             >
               Stock
             </FormField>
 
             <FormField
               type={"number"}
-              name={"min_stock"}
+              name={"game_min_stock"}
               id={minStockId}
               placeholder={0}
-              value={fields.min_stock}
-              onChange={(e) => handleFieldsChange(e, "min_stock")}
+              value={inputValues.game_min_stock}
+              onChange={(e) => handleInputChange(e, "game_min_stock")}
             >
               Stock minimo
             </FormField>
+          </div>
+          <div className="field-container">
+            <label className="label-description" htmlFor="game_description">
+              Descripción
+            </label>
+            <textarea
+              className="text-description"
+              name="game_description"
+              id={""}
+              value={inputValues.game_description}
+              onChange={(e) => handleInputChange(e, "game_description")}
+            />
           </div>
         </div>
 
@@ -287,7 +297,7 @@ function AdminAddGame() {
         </div>
         <div className="btn-container">
           <button className="btn-discard btn">Descartar</button>
-          <button className="btn-save btn" onClick={(e) => handleCreateGame(e)}>
+          <button className="btn-save btn">
             Guardar <i className="fa-solid fa-floppy-disk"></i>
           </button>
         </div>

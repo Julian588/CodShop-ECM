@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import ToastMessage from "../Components/Toast";
 
 export const cartContext = createContext();
 
@@ -8,8 +7,6 @@ function CartProvider({ children }) {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  const [toastVisible, setToastVisible] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
 
   const addCart = (product, licencia, consola) => {
     const productsInCartIndex = cart.findIndex(
@@ -28,8 +25,6 @@ function CartProvider({ children }) {
       ...prevState,
       { ...product, consola: consola, licencia: licencia, cantidad: 1 },
     ]);
-    setToastMessage(`${product.nombre} ha sido agregado al carrito.`);
-    setToastVisible(true);
   };
 
   const removeFromCart = (product, consola, licencia) => {
@@ -56,8 +51,6 @@ function CartProvider({ children }) {
     );
   };
 
-  const closeToast = () => setToastVisible(false);
-
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -72,11 +65,6 @@ function CartProvider({ children }) {
       }}
     >
       {children}
-      <ToastMessage
-        show={toastVisible}
-        message={toastMessage}
-        onClose={closeToast}
-      />
     </cartContext.Provider>
   );
 }

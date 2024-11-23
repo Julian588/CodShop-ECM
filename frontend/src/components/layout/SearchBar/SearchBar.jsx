@@ -18,7 +18,7 @@ function SearchBar() {
   return (
     <form className="input__container" onSubmit={handleSearch}>
       <input
-        type="text"
+        type="search"
         placeholder="Buscar..."
         className="buscador"
         value={query}
