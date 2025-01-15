@@ -1,5 +1,5 @@
 import "./ModalEditGame.css";
-import { useState } from "react";
+import { useId, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import FormField from "@layout/FormField/FormField";
@@ -8,14 +8,24 @@ import gameGender from "@lib/gameGender";
 import gameConsole from "@lib/gameConsoles";
 
 function ModalEditGame({ handleClose, show, game }) {
-  const [updatedGame, setUpdatedGame] = useState(game);
-  const genderValues = updatedGame.game_gender.split(" ");
-  const consoleValues = updatedGame.game_console.split(" ");
-  const [genderValue, setGenderValue] = useState(genderValues);
-  const [consoleValue, setConsoleValue] = useState(consoleValues);
-  const [addGenderValue, setAddGenderValue] = useState(genderValue);
-  const [addConsoleValue, setAddConsoleValue] = useState(consoleValue);
+  const consoleId = useId();
+  const genderId = useId();
+
+  const [genderValue, setGenderValue] = useState([]);
+  const [consoleValue, setConsoleValue] = useState([]);
+  const [addGenderValue, setAddGenderValue] = useState([{ name: "" }]);
+  const [addConsoleValue, setAddConsoleValue] = useState([{ name: "" }]);
   const [isOffer, setIsOffer] = useState(game.is_offer);
+
+  const handleSelectValue = (e, setValue, index) => {
+    const value = e.target.value;
+    setValue((prevState) => {
+      const newArray = [...prevState];
+      newArray[index] = value;
+      return newArray;
+    });
+    console.log(inputValues);
+  };
 
   const handleIsOffer = (e) => {
     setIsOffer(e.target.checked);
@@ -134,24 +144,26 @@ function ModalEditGame({ handleClose, show, game }) {
             </FormField>
           </div>
           <div className="second-container">
-            {/* <SelectContainer
-              title={"Genero"}
-              valuesArray={gameGender}
-              arraySelect={addGenderValue}
-              setArraySelect={setAddGenderValue}
-              value={genderValue}
-              setValue={setGenderValue}
-              handleSelectValue={handleSelectValue}
-            />
-            <SelectContainer
-              title={"Consola"}
-              valuesArray={gameConsole}
-              arraySelect={addConsoleValue}
-              setArraySelect={setAddConsoleValue}
-              value={consoleValue}
-              setValue={setConsoleValue}
-              handleSelectValue={handleSelectValue}
-            /> */}
+          <SelectContainer
+            title={"Genero"}
+            valuesArray={gameGender}
+            arraySelect={addGenderValue}
+            setArraySelect={setAddGenderValue}
+            value={genderValue}
+            setValue={setGenderValue}
+            fieldId={genderId}
+            handleSelectValue={handleSelectValue}
+          />
+          <SelectContainer
+            title={"Consola"}
+            valuesArray={gameConsole}
+            arraySelect={addConsoleValue}
+            setArraySelect={setAddConsoleValue}
+            value={consoleValue}
+            setValue={setConsoleValue}
+            fieldId={consoleId}
+            handleSelectValue={handleSelectValue}
+          />
             <div className="field-container">
               <label className="label-description" htmlFor="game_description">
                 Descripción
@@ -167,10 +179,10 @@ function ModalEditGame({ handleClose, show, game }) {
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant="secondary" onClick={handleClose} style={{backgroundColor:"var(--color-quartery)", fontSize:"1.5rem"}}>
           Cancelar
         </Button>
-        <Button variant="primary" onClick={handleClose}>
+        <Button variant="primary" onClick={handleClose} style={{backgroundColor:"var(--color-primary)", fontSize:"1.5rem"}}>
           Guardar Cambios
         </Button>
       </Modal.Footer>

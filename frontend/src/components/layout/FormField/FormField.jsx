@@ -6,7 +6,6 @@ function FormField({
   id,
   type,
   value,
-  defaultValue,
   onChange,
   isSelect = false,
   options = [],

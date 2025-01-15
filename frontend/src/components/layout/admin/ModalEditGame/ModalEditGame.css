@@ -1,14 +1,32 @@
 .form-edit_game {
   display: flex;
   gap: 2rem;
-  
 
-  & .first-container{
+  & .first-container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
-  & .second-container{
+  & .second-container {
     width: 100%;
+
+    & .label-description {
+      font-size: 2rem;
+      color: var(--color-quartery);
+    }
+
+    & .text-description {
+      height: 15.8rem;
+      min-height: 3.5rem;
+      max-height: 15.8rem;
+      outline: none;
+      padding-inline: 1rem;
+      border-radius: 10px;
+      font-size: 2rem;
+      color: var(--color-quartery);
+    }
   }
 
   & .isOffer-wrapper {
@@ -17,6 +35,7 @@
     justify-content: start;
     align-items: flex-start;
     gap: 2rem;
+    padding-block: 1.5rem;
 
     & .checkbox-wrapper {
       position: relative;

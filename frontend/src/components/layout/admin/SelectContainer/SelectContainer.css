@@ -1,0 +1,66 @@
+.title-class_game {
+  font-size: 3rem;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+& .select-container {
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    font-size: 2rem;
+    color: var(--color-quartery);
+  }
+
+  & .select-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+
+    & .field-select {
+      width: 18.2rem;
+      height: 3.5rem;
+      font-size: 2rem;
+      border-radius: 10px;
+      padding-inline: 2rem;
+      color: var(--color-quartery);
+      cursor: pointer;
+    }
+
+    & .btn-add-select {
+      min-width: 3rem;
+      min-height: 3rem;
+      border: none;
+      background-color: var(--color-primary);
+      color: var(--color-terceary);
+      border-radius: 5px;
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    & .delete-select {
+      border: none;
+      padding: 0.5rem;
+      min-width: 2.2rem;
+      min-height: 2.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      background-color: var(--color-quartery);
+      color: var(--color-terceary);
+      visibility: hidden;
+      opacity: 0;
+      transition: var(--transition-1);
+      margin-bottom: 0.7rem;
+    }
+  }
+
+  & .select-wrapper:hover .delete-select {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+  }
+}

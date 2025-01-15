@@ -2,6 +2,8 @@ import "./CardAdmin.css";
 import useFormattedPrice from "@hooks/useFormattedPrice";
 import ModalEditGame from "@layout/admin/ModalEditGame/ModalEditGame";
 import { useState } from "react";
+import { useGameStore } from "../../../../store/game";
+import { toast } from "sonner";
 
 function CardAdmin({ game }) {
   const consolas = game.game_console.split("|").join(" | ");
@@ -9,11 +11,17 @@ function CardAdmin({ game }) {
   const discountedPrice = game.price_primary - discount;
   const formattedPrimaryPrice = useFormattedPrice(game.price_primary);
   const formattedDiscountedPrice = useFormattedPrice(discountedPrice);
+  const { deleteGame } = useGameStore();
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleDeleteGame = async () => {
+    const { success, message } = await deleteGame(game._id);
+    toast.success("Listo!", { description: message });
+  };
 
   return (
     <>
@@ -56,7 +64,11 @@ function CardAdmin({ game }) {
             >
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
-            <button className="btn-borrar btn" type="button">
+            <button
+              className="btn-borrar btn"
+              type="button"
+              onClick={handleDeleteGame}
+            >
               <i className="fa-solid fa-trash-can"></i>
             </button>
           </div>

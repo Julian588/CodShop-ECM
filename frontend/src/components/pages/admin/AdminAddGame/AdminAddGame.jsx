@@ -11,10 +11,10 @@ import numeral from "numeral";
 import "numeral/locales/es";
 
 function AdminAddGame() {
-  numeral.locale("es"); // Usa un idioma compatible (por ejemplo, español)
+  numeral.locale("es");
   numeral.localeData().delimiters = {
-    thousands: ".", // Separador de miles
-    decimal: ",", // Separador decimal
+    thousands: ".",
+    decimal: ",",
   };
 
   const { createGame } = useGameStore();
@@ -56,16 +56,15 @@ function AdminAddGame() {
   const handlePriceValue = (e, price) => {
     const value = e.target.value;
     const formatted = numeral(value).format("0,0");
+    const valueToSave = parseInt(value.replace(/[.]/g, ""));
 
-    const saveValue = parseInt(formatted.replace(/,/g, ""));
     setInputValues((prevState) => ({
       ...prevState,
-      [price]: saveValue,
+      [price]: valueToSave,
     }));
-    setValueToShow((prevState) => ({
-      ...prevState,
-      [price]: formatted,
-    }));
+    setValueToShow((prevState) => {
+      return { ...prevState, [price]: formatted };
+    });
   };
 
   const handleIsOffer = (e) => {
