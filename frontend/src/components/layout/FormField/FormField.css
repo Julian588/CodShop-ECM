@@ -1,0 +1,47 @@
+.field-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  & .field-label {
+    font-size: 1.8rem;
+    color: var(--color-quartery);
+  }
+
+  & .input-wrapper {
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    gap: 1rem;
+    padding-inline: 1rem;
+
+    & .field-input {
+      width: 100%;
+      height: auto;
+      font-size: 2rem;
+      outline: none;
+      color: var(--color-quartery);
+      background-color: transparent;
+      border: none;
+    }
+
+    & .field-input::placeholder {
+      color: #999;
+    }
+
+    & span {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+  }
+
+  & .input-wrapper:has(:focus) {
+    border: 1.5px solid var(--color-primary);
+  }
+}

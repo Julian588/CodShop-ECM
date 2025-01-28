@@ -1,0 +1,23 @@
+.banner {
+  height: 70vh;
+  cursor: grab;
+
+  & .img-banner {
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+  }
+
+  & .swiper-pagination-bullet-active {
+    background-color: var(--color-terceary) !important;
+  }
+
+  & .swiper-button-prev.slider-arrow,
+  .swiper-button-next.slider-arrow {
+    color: var(--color-terceary);
+    font-size: 3rem;
+    border: 2px solid var(--color-terceary);
+    padding: 2.5rem;
+    border-radius: 50%;
+  }
+}

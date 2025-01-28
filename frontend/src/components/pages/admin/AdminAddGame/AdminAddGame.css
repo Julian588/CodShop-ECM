@@ -1,0 +1,111 @@
+.add-game-form {
+  padding: 3rem;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 1fr));
+  grid-template-rows: repeat(2, minmax(auto, 1fr));
+  gap: 1rem;
+
+  & .info-game {
+    background-color: var(--color-terceary);
+    border: 2px solid var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    grid-row: span 2;
+    padding: 3rem;
+    border-radius: 10px;
+    gap: 2rem;
+
+    & .title-info_game {
+      font-size: 3.2rem;
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    & .label-description {
+      font-size: 2rem;
+      color: var(--color-quartery);
+    }
+
+    & .text-description {
+      height: 15.8rem;
+      min-height: 3.5rem;
+      max-height: 15.8rem;
+      outline: none;
+      padding-inline: 1rem;
+      border-radius: 10px;
+      font-size: 2rem;
+      color: var(--color-quartery);
+    }
+
+    & .form-separator {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    & .checkbox {
+      align-items: flex-end;
+    }
+  }
+  & .class-game {
+    max-width: 76.1rem;
+    background-color: var(--color-terceary);
+    border: 2px solid var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 3rem;
+    border-radius: 10px;
+    gap: 2rem;
+
+    & label {
+      font-size: 1.8rem;
+      color: var(--color-quartery);
+    }
+  }
+
+  & .image-game {
+    background-color: var(--color-terceary);
+    border: 2px solid var(--color-primary);
+    padding: 3rem;
+    border-radius: 10px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+
+  & .btn-container {
+    height: 8rem;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1rem;
+
+    & .btn {
+      width: 13rem;
+      height: rem;
+      border: none;
+      outline: none;
+      font-size: 1.8rem;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      background-color: var(--color-terceary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    & .btn-save {
+      color: var(--color-terceary);
+      background-color: var(--color-primary);
+    }
+  }
+}

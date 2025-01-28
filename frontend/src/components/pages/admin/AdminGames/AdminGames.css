@@ -1,0 +1,18 @@
+.admin-products-section {
+  width: 100%;
+  height: calc(100vh - 10rem);
+  padding-inline: 5rem;
+  padding-top: 5rem;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+
+  & .products-container {
+    width: 100%;
+    min-height: 70.7rem;
+    display: grid;
+    place-items: start center;
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+  }
+}
