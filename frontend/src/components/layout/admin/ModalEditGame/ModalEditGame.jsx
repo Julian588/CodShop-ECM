@@ -3,45 +3,52 @@ import { useId, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import FormField from "@layout/FormField/FormField";
-import SelectContainer from "@layout/admin/SelectContainer/SelectContainer";
 import gameGender from "@lib/gameGender";
 import gameConsole from "@lib/gameConsoles";
+import Checkbox from "../../Checkbox/Checkbox";
+import useFieldsValues from "@hooks/useFieldsValues";
+import Select from "../Select/Select";
 
 function ModalEditGame({ handleClose, show, game }) {
-  const consoleId = useId();
-  const genderId = useId();
-
-  const [genderValue, setGenderValue] = useState([]);
-  const [consoleValue, setConsoleValue] = useState([]);
-  const [addGenderValue, setAddGenderValue] = useState([{ name: "" }]);
-  const [addConsoleValue, setAddConsoleValue] = useState([{ name: "" }]);
-  const [isOffer, setIsOffer] = useState(game.is_offer);
-
-  const handleSelectValue = (e, setValue, index) => {
-    const value = e.target.value;
-    setValue((prevState) => {
-      const newArray = [...prevState];
-      newArray[index] = value;
-      return newArray;
-    });
-    console.log(inputValues);
-  };
-
+  const [updatedGame, setUpdatedGame] = useState(game);
+  const [isOffer, setIsOffer] = useState(updatedGame.is_offer);
   const handleIsOffer = (e) => {
     setIsOffer(e.target.checked);
   };
 
-  const handleCreateProduct = () => {
-    setUpdatedGame({
-      ...updatedGame,
-      is_offer: isOffer,
+  const gameGenderOptions = game.game_gender.split(" ");
+  const gameConsoleOptions = game.game_console.split(" ");
+  const gameOptions = (options, totalOptions) => {
+    const filteredConsoles = totalOptions.filter((console) => {
+      return options.includes(console.value);
     });
+    return filteredConsoles;
   };
+  const [tagsGender, setTagsGender] = useState(
+    gameOptions(gameGenderOptions, gameGender)
+  );
+  const [tagsConsole, setTagsConsole] = useState(
+    gameOptions(gameConsoleOptions, gameConsole)
+  );
+
+  const [inputValues, setInputValues, handleInputChange] = useFieldsValues({
+    game_name: game.game_name,
+    full_game_name: game.game_name,
+    price_primary: game.price_primary,
+    price_secondary: game.price_secondary,
+    is_offer: game.is_offer,
+    percentage_offer: game.percentage_offer,
+    game_stock: game.game_stock,
+    game_min_stock: game.game_min_stock,
+    game_gender: "",
+    game_console: "",
+  });
+
   return (
     <Modal
       show={show}
       onHide={handleClose}
-      size="lg"
+      size="xl"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -85,35 +92,7 @@ function ModalEditGame({ handleClose, show, game }) {
             >
               Precio Licencia Secundaria
             </FormField>
-            <div className="isOffer-wrapper">
-              <label htmlFor="isOffer">En Oferta?</label>
-              <div className="checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="isOffer"
-                  checked={isOffer}
-                  onChange={handleIsOffer}
-                />
-                <svg viewBox="0 0 35.6 35.6">
-                  <circle
-                    className="background"
-                    cx="17.8"
-                    cy="17.8"
-                    r="17.8"
-                  ></circle>
-                  <circle
-                    className="stroke"
-                    cx="17.8"
-                    cy="17.8"
-                    r="14.37"
-                  ></circle>
-                  <polyline
-                    className="check"
-                    points="11.78 18.12 15.55 22.23 25.17 12.87"
-                  ></polyline>
-                </svg>
-              </div>
-            </div>
+
             <FormField
               type={"number"}
               name={"percentage_offer"}
@@ -123,6 +102,8 @@ function ModalEditGame({ handleClose, show, game }) {
             >
               Porcentaje de la Oferta
             </FormField>
+
+            <Checkbox isOffer={isOffer} handleIsOffer={handleIsOffer} />
             <FormField
               type={"number"}
               name={"stock"}
@@ -140,30 +121,26 @@ function ModalEditGame({ handleClose, show, game }) {
               value={game.min_stock}
               onChange={(e) => handleInputChange(e, "min_stock")}
             >
-              Stock minimo
+              Stock mínimo
             </FormField>
           </div>
           <div className="second-container">
-          <SelectContainer
-            title={"Genero"}
-            valuesArray={gameGender}
-            arraySelect={addGenderValue}
-            setArraySelect={setAddGenderValue}
-            value={genderValue}
-            setValue={setGenderValue}
-            fieldId={genderId}
-            handleSelectValue={handleSelectValue}
-          />
-          <SelectContainer
-            title={"Consola"}
-            valuesArray={gameConsole}
-            arraySelect={addConsoleValue}
-            setArraySelect={setAddConsoleValue}
-            value={consoleValue}
-            setValue={setConsoleValue}
-            fieldId={consoleId}
-            handleSelectValue={handleSelectValue}
-          />
+            <div className="field-separator">
+              <label className="label-description">Genero</label>
+              <Select
+                options={gameGender}
+                tags={tagsGender}
+                setTags={setTagsGender}
+              />
+            </div>
+            <div className="field-separator">
+            <label className="label-description">Consolas</label>
+              <Select
+                options={gameConsole}
+                tags={tagsConsole}
+                setTags={setTagsConsole}
+              />
+            </div>
             <div className="field-container">
               <label className="label-description" htmlFor="game_description">
                 Descripción
@@ -179,10 +156,24 @@ function ModalEditGame({ handleClose, show, game }) {
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose} style={{backgroundColor:"var(--color-quartery)", fontSize:"1.5rem"}}>
+        <Button
+          variant="secondary"
+          onClick={handleClose}
+          style={{
+            backgroundColor: "var(--color-quartery)",
+            fontSize: "1.5rem",
+          }}
+        >
           Cancelar
         </Button>
-        <Button variant="primary" onClick={handleClose} style={{backgroundColor:"var(--color-primary)", fontSize:"1.5rem"}}>
+        <Button
+          variant="primary"
+          onClick={handleClose}
+          style={{
+            backgroundColor: "var(--color-primary)",
+            fontSize: "1.5rem",
+          }}
+        >
           Guardar Cambios
         </Button>
       </Modal.Footer>

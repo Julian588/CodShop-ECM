@@ -12,6 +12,7 @@ function CardAdmin({ game }) {
   const formattedPrimaryPrice = useFormattedPrice(game.price_primary);
   const formattedDiscountedPrice = useFormattedPrice(discountedPrice);
   const { deleteGame } = useGameStore();
+  const gameGenders = game.game_gender.split(" ");
 
   const [show, setShow] = useState(false);
 
@@ -44,6 +45,9 @@ function CardAdmin({ game }) {
               <strong>Precio original:</strong>{" "}
               <span>${formattedPrimaryPrice}</span>
             </li>
+            <li className="stock">
+              <strong>Stock:</strong> <span>{game.game_stock || 0} Und</span>
+            </li>
             <li className="precio-oferta">
               <strong>Precio Oferta:</strong>
               <span>${formattedDiscountedPrice || "0"}</span>
@@ -52,8 +56,13 @@ function CardAdmin({ game }) {
               <strong>Porcentaje Oferta:</strong>
               <span>{game.is_offer ? `${game.percentage_offer}%` : "0%"}</span>
             </li>
-            <li className="stock">
-              <strong>Stock:</strong> <span>{game.game_stock || 0}</span>
+            <li className="generos">
+              <strong className="generos">Géneros:</strong>
+              {gameGenders.map((gender, index) => (
+                <span key={index} className="generos_tag">
+                  {gender}
+                </span>
+              ))}
             </li>
           </ul>
           <div className="btn-container">
