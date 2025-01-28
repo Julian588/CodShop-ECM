@@ -1,7 +1,6 @@
 import "./AdminAddGame.css";
 import { useId, useState } from "react";
 import useFieldsValues from "@hooks/useFieldsValues";
-import SelectContainer from "@layout/admin/SelectContainer/SelectContainer";
 import FormField from "@layout/FormField/FormField";
 import { Toaster, toast } from "sonner";
 import { useGameStore } from "@store/game";
@@ -9,6 +8,8 @@ import gameGender from "@lib/gameGender";
 import gameConsole from "@lib/gameConsoles";
 import numeral from "numeral";
 import "numeral/locales/es";
+import Select from "@layout/Select/Select";
+import Checkbox from "../../../layout/Checkbox/Checkbox";
 
 function AdminAddGame() {
   numeral.locale("es");
@@ -23,17 +24,13 @@ function AdminAddGame() {
   const pricePrimaryId = useId();
   const priceSecondaryId = useId();
   const percentageOfferId = useId();
-  const consoleId = useId();
-  const genderId = useId();
-  const isOfferId = useId();
   const stockId = useId();
   const minStockId = useId();
 
+  const [tagsGender, setTagsGender] = useState([]);
+  const [tagsConsole, setTagsConsole] = useState([]);
   const [isOffer, setIsOffer] = useState(false);
-  const [genderValue, setGenderValue] = useState([]);
-  const [consoleValue, setConsoleValue] = useState([]);
-  const [addGenderValue, setAddGenderValue] = useState([{ name: "" }]);
-  const [addConsoleValue, setAddConsoleValue] = useState([{ name: "" }]);
+
   const [valueToShow, setValueToShow] = useState({
     price_primary: "",
     price_secondary: "",
@@ -50,9 +47,6 @@ function AdminAddGame() {
     game_gender: "",
     game_console: "",
   });
-
-  console.log(inputValues);
-
   const handlePriceValue = (e, price) => {
     const value = e.target.value;
     const formatted = numeral(value).format("0,0");
@@ -72,16 +66,6 @@ function AdminAddGame() {
     setIsOffer(isChecked);
   };
 
-  const handleSelectValue = (e, setValue, index) => {
-    const value = e.target.value;
-    setValue((prevState) => {
-      const newArray = [...prevState];
-      newArray[index] = value;
-      return newArray;
-    });
-    console.log(inputValues);
-  };
-
   const updateInputValues = (updatedValues) => {
     return new Promise((resolve) => {
       setInputValues((prevState) => {
@@ -94,8 +78,8 @@ function AdminAddGame() {
 
   const handleCreateGame = async (e) => {
     e.preventDefault();
-    const gameGender = genderValue.join(" ");
-    const gameConsole = consoleValue.join(" ");
+    const gameGender = tagsGender.map((tag) => tag.name).join(" ");
+    const gameConsole = tagsConsole.map((tag) => tag.value).join(" ");
     const fullGameName = inputValues.game_name.split(" ").join("");
 
     const updatedValues = await updateInputValues({
@@ -183,37 +167,8 @@ function AdminAddGame() {
             </FormField>
           </div>
 
-          <div className="form-separator">
-            <div className="isOffer-wrapper">
-              <label htmlFor="isOffer">En Oferta?</label>
-              <div className="checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="isOffer"
-                  id={isOfferId}
-                  value={isOffer}
-                  onChange={handleIsOffer}
-                />
-                <svg viewBox="0 0 35.6 35.6">
-                  <circle
-                    className="background"
-                    cx="17.8"
-                    cy="17.8"
-                    r="17.8"
-                  ></circle>
-                  <circle
-                    className="stroke"
-                    cx="17.8"
-                    cy="17.8"
-                    r="14.37"
-                  ></circle>
-                  <polyline
-                    className="check"
-                    points="11.78 18.12 15.55 22.23 25.17 12.87"
-                  ></polyline>
-                </svg>
-              </div>
-            </div>
+          <div className="form-separator checkbox">
+            <Checkbox isOffer={isOffer} handleIsOffer={handleIsOffer} />
 
             <FormField
               type={"number"}
@@ -247,7 +202,7 @@ function AdminAddGame() {
               value={inputValues.game_min_stock}
               onChange={(e) => handleInputChange(e, "game_min_stock")}
             >
-              Stock minimo
+              Stock mínimo
             </FormField>
           </div>
           <div className="field-container">
@@ -266,26 +221,22 @@ function AdminAddGame() {
 
         <div className="class-game">
           <h2 className="title-class_game">Clasificación del Juego.</h2>
-          <SelectContainer
-            title={"Genero"}
-            valuesArray={gameGender}
-            arraySelect={addGenderValue}
-            setArraySelect={setAddGenderValue}
-            value={genderValue}
-            setValue={setGenderValue}
-            fieldId={genderId}
-            handleSelectValue={handleSelectValue}
-          />
-          <SelectContainer
-            title={"Consola"}
-            valuesArray={gameConsole}
-            arraySelect={addConsoleValue}
-            setArraySelect={setAddConsoleValue}
-            value={consoleValue}
-            setValue={setConsoleValue}
-            fieldId={consoleId}
-            handleSelectValue={handleSelectValue}
-          />
+          <div className="select-wrapper">
+            <label className="field-label">Genero</label>
+            <Select
+              options={gameGender}
+              tags={tagsGender}
+              setTags={setTagsGender}
+            />
+          </div>
+          <div className="select-wrapper">
+            <label className="field-label">Consolas</label>
+            <Select
+              options={gameConsole}
+              tags={tagsConsole}
+              setTags={setTagsConsole}
+            />
+          </div>
         </div>
         <div className="image-game">
           <h3 className="title-image-game">Imagen del Juego.</h3>

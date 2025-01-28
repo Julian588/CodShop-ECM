@@ -9,8 +9,9 @@
 
   & .products-container {
     width: 100%;
+    min-height: 70.7rem;
     display: grid;
-    place-items: center;
+    place-items: start center;
     gap: 4rem;
     grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
   }

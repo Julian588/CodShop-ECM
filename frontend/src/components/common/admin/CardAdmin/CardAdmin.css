@@ -1,111 +1,120 @@
 .card_admin-container {
-    height: auto;
-    width: 42rem;
-    padding: 1rem;
+  height: auto;
+  width: 45rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  transition: var(--transition-1);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+
+  & .img-container {
+    width: 80%;
+
+    & img {
+      width: 100%;
+      position: relative;
+      height: 42.8rem;
+    }
+  }
+
+  & .card-content {
+    width: 100%;
+    flex: 1;
+    margin-top: 0.5rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    position: relative;
-    transition: var(--transition-1);
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  
-    & .img-container {
-      width: 80%;
-  
-      & img {
-        width: 100%;
-        position: relative;
-        height: 42.8rem;
+    align-items: flex-start;
+    justify-content: space-around;
+    cursor: default;
+
+    & h2,
+    h3 {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 2rem;
+      color: var(--color-quartery);
+      font-weight: 500;
+      margin-top: 1rem;
+
+      & strong {
+        padding: 0.5rem 0.8rem;
+        border-radius: 0.5rem;
+        background-color: var(--color-terceary);
+        color: var(--color-primary);
       }
     }
-  
-    & .card-content {
+
+    & .price-container {
       width: 100%;
-      flex: 1;
-      margin-top: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-around;
-      cursor: default;
-  
-      & h2,
-      h3 {
-        width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 1rem;
+      padding-block: 2rem;
+
+      & li {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        font-size: 2rem;
-        color: var(--color-quartery);
-        font-weight: 500;
-        margin-top: 1rem;
-  
+        gap: 1rem;
+        font-size: 1.5rem;
+
+        & span {
+          color: var(--color-quartery);
+          background-color: var(--color-terceary);
+          padding: 0.5rem 0.8rem;
+          border-radius: 0.5rem;
+          font-weight: 500;
+        }
+
         & strong {
           padding: 0.5rem 0.8rem;
           border-radius: 0.5rem;
-          background-color: var(--color-terceary);
-          color: var(--color-primary);
-        }
-      }
-  
-      & .price-container {
-        width: 100%;
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 1rem;
-        padding-block: 2rem;
-  
-        & li {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          font-size: 1.5rem;
-  
-          & span {
-            color: var(--color-quartery);
-            background-color: var(--color-terceary);
-            padding: 0.5rem 0.8rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-          }
-  
-          & strong {
-            padding: 0.5rem 0.8rem;
-            border-radius: 0.5rem;
-            background-color: var(--color-primary);
-            color: var(--color-terceary);
-          }
-        }
-      }
-  
-      & .btn-container {
-        width: 100%;
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        gap: 2rem;
-  
-        & .btn {
-          display: grid;
-          place-content: center;
-          color: var(--color-primary);
-          background-color: #e2e2e2;
-          font-size: 1.8rem;
-          padding: 1rem;
-          border: none;
-          border-radius: 0.5rem;
-          cursor: pointer;
-          transition: var(--transition-1);
-        }
-  
-        & .btn:hover {
-          transform: scale(1.08);
-          color: #e2e2e2;
           background-color: var(--color-primary);
+          color: var(--color-terceary);
         }
+      }
+
+      & .generos {
+        grid-column: span 2 / span 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+      }
+    }
+
+    & .btn-container {
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 2rem;
+
+      & .btn {
+        display: grid;
+        place-content: center;
+        color: var(--color-primary);
+        background-color: #e2e2e2;
+        font-size: 1.8rem;
+        padding: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: var(--transition-1);
+      }
+
+      & .btn:hover {
+        transform: scale(1.08);
+        color: #e2e2e2;
+        background-color: var(--color-primary);
       }
     }
   }
+}
